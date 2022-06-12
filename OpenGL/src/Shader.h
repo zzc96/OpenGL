@@ -27,9 +27,9 @@ public:
 private:
 	unsigned int m_RendererID;
 	std::string m_FilePath;
-	std::unordered_map<std::string, int> m_UniformLocationCache;
+	mutable std::unordered_map<std::string, int> m_UniformLocationCache;
 private:
-	unsigned int GetUniformLocation(const std::string& name);
+	unsigned int GetUniformLocation(const std::string& name) const;
 	unsigned int CompileShader(unsigned int type, const std::string& source);
 	unsigned int CreateShader(const std::string& vertexShader, const std::string& fragmentShader);
 	ShaderProgramSource ParseShader(const std::string& filepath);
